@@ -5,14 +5,59 @@ class Pacman {
     this.width = width;
     this.height = height;
     this.speed = speed;
+    this.direction = DIRECTION_RIGHT;
   }
-  moveProcess() {}
+  moveProcess() {
+    this.changeDirectionIfPossible();
+    this.moveForwards();
+    if (this.checkCollision()) {
+      this.moveBackwards();
+    }
+  }
+
   eat() {}
-  moveBackwards() {}
-  moveForwards() {}
+
+  moveBackwards() {
+    switch (this.direction) {
+      case DIRECTION_RIGHT:
+        this.x -= this.speed;
+        break;
+      case DIRECTION_UP:
+        this.y += this.speed;
+        break;
+      case DIRECTION_LEFT:
+        this.x += this.speed;
+        break;
+      case DIRECTION_BOTTOM:
+        this.y -= this.speed;
+        break;
+    }
+  }
+
+  moveForwards() {
+    switch (this.direction) {
+      case DIRECTION_RIGHT:
+        this.x += this.speed;
+        break;
+      case DIRECTION_UP:
+        this.y -= this.speed;
+        break;
+      case DIRECTION_LEFT:
+        this.x -= this.speed;
+        break;
+      case DIRECTION_BOTTOM:
+        this.y += this.speed;
+        break;
+    }
+  }
+
   checkCollision() {}
+
   checkGhostCollision() {}
+
   changeDirectionIfPossible() {}
+
   changeAnimation() {}
+
   draw() {}
 }
