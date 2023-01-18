@@ -6,6 +6,7 @@ class Pacman {
     this.height = height;
     this.speed = speed;
     this.direction = DIRECTION_RIGHT;
+    this.nextDirection = this.direction;
     this.currentFrame = 1;
     this.frameCount = 7;
 
@@ -95,7 +96,7 @@ class Pacman {
 
     canvasContext.drawImage(
       pacmanFrames,
-      (this.currentFrame - 1) / oneBlockSize,
+      (this.currentFrame - 1) * oneBlockSize,
       0,
       oneBlockSize,
       oneBlockSize,
