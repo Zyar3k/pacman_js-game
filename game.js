@@ -75,6 +75,11 @@ let update = () => {
   for (let i = 0; i < ghosts.length; i++) {
     ghosts[i].moveProcess();
   }
+
+  pacman.checkGhostCollision();
+  if (pacman.checkGhostCollision()) {
+    console.log("hit");
+  }
 };
 
 let drawFoods = () => {
