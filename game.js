@@ -75,11 +75,22 @@ let drawFoods = () => {
   }
 };
 
+let drawScore = () => {
+  canvasContext.font = "20px Emulogic";
+  canvasContext.fillStyle = "white";
+  canvasContext.fillText(
+    "Score: " + score,
+    0,
+    oneBlockSize * (map.length + 1) + 10
+  );
+};
+
 let draw = () => {
   createRect(0, 0, canvas.width, canvas.height, "black");
   drawWalls();
   drawFoods();
   pacman.draw();
+  drawScore();
 };
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
