@@ -10,11 +10,11 @@ let createRect = (x, y, width, height, color) => {
 
 let fps = 30;
 let oneBlockSize = 20;
-let wallColor = "#6a6a6a";
+let wallColor = "#1919A6";
 let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "black";
-let foodColor = "#FEB897";
+let foodColor = "#DEA185";
 let score = 0;
 let ghosts = [];
 let ghostsCount = 4;
@@ -88,7 +88,6 @@ let update = () => {
 
   pacman.checkGhostCollision();
   if (pacman.checkGhostCollision()) {
-    console.log("hit");
     restartGame();
   }
 
@@ -191,7 +190,6 @@ let drawWalls = () => {
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[0].length; j++) {
       if (map[i][j] == 1) {
-        // walls
         {
           createRect(
             j * oneBlockSize,
@@ -281,16 +279,12 @@ window.addEventListener("keydown", (event) => {
 
   setTimeout(() => {
     if (k == 37 || k == 65) {
-      // l
       pacman.nextDirection = DIRECTION_LEFT;
     } else if (k == 38 || k == 87) {
-      //up
       pacman.nextDirection = DIRECTION_UP;
     } else if (k == 39 || k == 68) {
-      //r
       pacman.nextDirection = DIRECTION_RIGHT;
     } else if (k == 40 || k == 83) {
-      //b
       pacman.nextDirection = DIRECTION_BOTTOM;
     }
   }, 1);
