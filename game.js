@@ -17,6 +17,7 @@ let wallInnerColor = "black";
 let foodColor = "#FEB897";
 let score = 0;
 let ghosts = [];
+let ghostsCount = 4;
 
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
@@ -92,12 +93,19 @@ let drawScore = () => {
   );
 };
 
+let drawGhosts = () => {
+  for (let i = 0; i < ghosts.length; i++) {
+    ghosts[i].draw();
+  }
+};
+
 let draw = () => {
   createRect(0, 0, canvas.width, canvas.height, "black");
   drawWalls();
   drawFoods();
   pacman.draw();
   drawScore();
+  drawGhosts();
 };
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
@@ -170,7 +178,7 @@ let createNewPacman = () => {
 
 let createGhosts = () => {
   ghosts = [];
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < ghostsCount; i++) {
     let newGhost = new Ghost(
       9 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
       10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
@@ -183,6 +191,7 @@ let createGhosts = () => {
       116,
       6 + i
     );
+    ghosts.push(newGhost);
   }
 };
 
